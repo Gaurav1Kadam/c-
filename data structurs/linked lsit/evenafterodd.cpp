@@ -46,39 +46,41 @@ class node{
             node *head=this;
             int i=0,j=0;
             while(head){
-                cout<<head->data%2<<endl;
-                if(head->data%2!=0){  
+                if(head->data%2==0){  
+                    
                     if(i==0){
                         i++;
-                        evenh=head;
-                        event=head;
-                        cout<<event->data<<endl;
+                        evenh=new node(head->data);
+                        event=evenh;
+                        //cout<<event->data<<endl;
                     }
                     else{
-                        event->next=head;
+                        event->next=new node(head->data);
+                        event=event->next;
                     } 
-                    event=event->next;
+                    
                 }
                 else{
+                    cout<<"odd"<<endl;
+                    cout<<head->data<<endl;
                     if(j==0){
                         j++;
-                        oddh=head;
-                        oddt=head;
+                        oddh=new node(head->data);
+                        oddt=oddh;
                     }
                     else{
-                        oddt->next=head;
-                        
+                        oddt->next=new node(head->data);
+                        oddt=oddt->next;
                     }
-                    oddt=oddt->next;
                 }
                 head=head->next;
             }
-           // oddt->next=evenh;
-            return evenh;
+            oddt->next=evenh;
+            return oddh;
         }
 };
 int main(){
-    int arr[5]={1,2,3,4,5};
+    int arr[5]={1,2,3,5,4};
     node *A;
     A=A->takeinput(arr,5);
     node *B=A->evenafterodd();
